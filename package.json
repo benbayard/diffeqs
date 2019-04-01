@@ -1,0 +1,21 @@
+{
+  "name": "diffeqs",
+  "version": "0.0.1",
+  "description": "Practice diffeqs",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^11.12.2",
+    "eslint": "^5.16.0",
+    "prettier": "^1.16.4",
+    "typescript": "^3.4.1"
+  },
+  "dependencies": {
+    "ink": "^2.1.0",
+    "react": "^16.8.6"
+  }
+}
