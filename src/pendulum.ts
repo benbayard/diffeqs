@@ -1,5 +1,5 @@
 export class Pendulum {
-  constructor(
+  public constructor(
     public angle: number,
     public angleRateOfChange: number,
     private pendulumLength: number = 2,
@@ -8,18 +8,18 @@ export class Pendulum {
     public timeStep = 0.0001
   ) {}
 
-  private get changeInRate() {
+  private get changeInRate(): number {
     return (
       -1 * this.airResistance * this.angleRateOfChange -
       (this.gravity / this.pendulumLength) * Math.sin(this.angle)
     );
   }
 
-  public get numSteps() {
+  public get numSteps(): number {
     return 1 / this.timeStep;
   }
 
-  public incrementTime() {
+  public incrementTime(): void {
     this.angle += this.angleRateOfChange * this.timeStep;
     this.angleRateOfChange += this.changeInRate * this.timeStep;
   }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { render, Color } from 'ink';
+import { Color } from 'ink';
 
 import { Pendulum } from './pendulum';
 
-function useInterval(callback: () => any, delay: number) {
+function useInterval(callback: Function, delay: number): void {
   const savedCallback = useRef<typeof callback>();
 
   // Remember the latest callback.
@@ -13,7 +13,7 @@ function useInterval(callback: () => any, delay: number) {
 
   // Set up the interval.
   useEffect(() => {
-    function tick() {
+    function tick(): void {
       savedCallback.current && savedCallback.current();
     }
     if (delay !== null) {
@@ -23,14 +23,14 @@ function useInterval(callback: () => any, delay: number) {
   }, [delay]);
 }
 
-export function PendulumRenderer() {
+export function PendulumRenderer(): React.ReactElement {
   const savedPendulum = useRef<Pendulum>();
   const [stepsTaken, setStepsTaken] = useState<number>(0);
 
-  // Remember the latest callback.
   useEffect(() => {
     savedPendulum.current = new Pendulum(Math.PI / 3, 0, 1);
   }, []);
+
   useInterval(() => {
     if (!savedPendulum.current) {
       return;
